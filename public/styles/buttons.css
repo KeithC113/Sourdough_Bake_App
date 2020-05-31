@@ -1,0 +1,37 @@
+.button {
+  border-color: red;
+  border-radius: 25px;
+  text-align: center;
+  margin-right: 50px;
+  padding: 5px;
+  font-size:28px;
+  cursor:pointer;
+}
+
+ .button--newbake {
+  width: 400px;
+  height: 200px;
+  border: 3px solid #73AD21;
+}
+
+.button--newbake:hover {
+  background-color: #AF767F
+}
+
+.button--oldbakes {float:right;
+}
+
+.button--oldbakes:hover {
+  background-color: red;
+}
+
+.button--AppGuide {float:center;
+}
+
+.button--AppGuide:hover {
+  background-color: #76A5AF;
+}
+
+.button--wrapper {
+  margin: 0px 0px 30px 0px;
+}

@@ -6,7 +6,7 @@ class Bake
 attr_accessor :id, :bake_date, :score, :starter_time,
               :leaven_time, :autolyse_time, :add_salt_time,
               :bulk_time, :shape_time, :prove_time, :bake_time,
-              :cool_time, :note_id
+              :cool_time, :note_tag
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -21,21 +21,43 @@ attr_accessor :id, :bake_date, :score, :starter_time,
     @prove_time = options['prove_time']
     @bake_time = options['bake_time']
     @cool_time = options['cool_time']
-    @note_id = options['note_id']
+    @note_tag = options['note_tag']
   end
 
   def save()
     sql = "INSERT INTO bakes (bake_date, score, starter_time, leaven_time,
           autolyse_time, add_salt_time, bulk_time, shape_time, prove_time,
-          bake_time, cool_time)
-          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11,$12)
+          bake_time, cool_time, note_tag)
+          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
           RETURNING id"
     values = [@bake_date, @score, @starter_time, @leaven_time,
               @autolyse_time, @add_salt_time, @bulk_time, @shape_time,
-              @prove_time, @bake_time, @cool_time, @note_id]
+              @prove_time, @bake_time, @cool_time, @note_tag]
     result = SqlRunner.run(sql, values)
     @id = result[0]['id'].to_i
   end
+
+# =>  Method to update the bake table
+  def update()
+    sql = "UPDATE bakes SET (bake_date, score, starter_time, leaven_time,
+          autolyse_time, add_salt_time, bulk_time, shape_time, prove_time,
+          bake_time, cool_time, note_tag)
+          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+          WHERE id = $13"
+    values = [@bake_date, @score, @starter_time, @leaven_time,
+              @autolyse_time, @add_salt_time, @bulk_time, @shape_time,
+              @prove_time, @bake_time, @cool_time, @note_tag, @id]
+    SqlRunner.run(sql,values)
+  end
+
+# => find note from bake
+  # def note()
+  #   sql = "SELECT * FROM notes WHERE id = $1"
+  #   values = [@note_tag]
+  #   results = SqlRunner.run(sql, values)
+  #   note_data = results[0]
+  #   note = Note.new(note_data)
+  # end
 
 # => Delete bake by id
   def delete()
@@ -43,14 +65,7 @@ attr_accessor :id, :bake_date, :score, :starter_time,
     values = [@id]
     SqlRunner.run(sql, values)
   end
-
-# =>  Find bake by note ??? do I need this one ??
-# def find_bake()
-#   sql = "SELECT * FROM bakes INNER JOIN bakes ON houses.id = students.house_id WHERE students.id = $1"
-#   values = [@id]
-#   result = SqlRunner.run(sql, values)
-#   return result.map { |house| House.new(house) }
-# end
+# => class functions
 
 # =>  Find all bakes - returning all bakes
   def self.find_all()
@@ -61,11 +76,10 @@ attr_accessor :id, :bake_date, :score, :starter_time,
   end
 
 # => Find bake by ID - returning one bake
-  def self.find_by_id(id)
+  def self.find(id)
     sql = "SELECT * FROM bakes WHERE id = $1"
     values = [id]
-    result = SqlRunner.run(sql, values)
-    return Bake.new(result.first)
+    bake = SqlRunner.run(sql,values)
   end
 
 # =>  Delete all bakes from db

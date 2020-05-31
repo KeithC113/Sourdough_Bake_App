@@ -12,6 +12,7 @@ attr_accessor :id, :note_tag, :bake_id
     @bake_id = options['bake_id']
   end
 
+# =>  save method
   def save()
     sql = "INSERT INTO notes (note_tag, bake_id)
           VALUES ($1, $2)
@@ -21,20 +22,19 @@ attr_accessor :id, :note_tag, :bake_id
     @id = result[0]['id'].to_i
   end
 
+# =>  Update note 
+  def update()
+    sql = "UPDATE notes SET (note_tag, bake_id) VALUES ($1, $2) WHERE id = $3"
+    values = [@note_tag, @bake_id, @id]
+    SqlRunner.run(sql, values)
+  end
+
 # => Delete Note by id
   def delete()
     sql = " DELETE FROM notes WHERE id = $1"
     values = [@id]
     SqlRunner.run(sql, values)
   end
-
-# =>  Find bake by note ??? do I need this one ??
-# def find_bake()
-#   sql = "SELECT * FROM bakes INNER JOIN bakes ON houses.id = students.house_id WHERE students.id = $1"
-#   values = [@id]
-#   result = SqlRunner.run(sql, values)
-#   return result.map { |house| House.new(house) }
-# end
 
 # =>  Find all Notes - returning all Notes
   def self.find_all()
