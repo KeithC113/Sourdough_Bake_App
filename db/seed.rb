@@ -1,10 +1,10 @@
 require('pry')
 require_relative('../models/bake.rb')
-# require_relative('../models/note')
+require_relative('../models/note.rb')
 
-# =>  clear the db of all records of Bake, notes & images
+# =>  clear the db of all records of Bake, Notes & Images
 Bake.delete_all()
-# House.delete_all()
+# Note.delete_all()
 
 bake1 = Bake.new({
   'bake_date' => 'Friday',
@@ -51,15 +51,25 @@ bake1 = Bake.new({
 bake1.save()
 bake2.save()
 bake3.save()
-# note1 = Note.new({
-#   # 'first_name'=> 'Harry',
-#   # 'last_name' => 'Potter',
-#   # 'house_id' => house1.id,
-#   # 'age' => 12
-#   })
-#
-#
-# note1.save()
+
+note1 = Note.new({
+  'note_tag'=> 'blah blah blah',
+  'bake_id' => bake1.id
+ })
+
+ note2 = Note.new({
+   'note_tag'=> 'blahh blahh blahh',
+   'bake_id' => bake2.id
+  })
+
+  note3 = Note.new({
+    'note_tag'=> 'blahhh blahhh blahhh',
+    'bake_id' => bake3.id
+   })
+
+note1.save()
+note2.save()
+note3.save()
 
 binding.pry
 nil

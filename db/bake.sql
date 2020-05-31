@@ -1,4 +1,4 @@
--- DROP TABLE notes;
+DROP TABLE notes;
 DROP TABLE bakes;
 
 CREATE TABLE bakes(
@@ -13,15 +13,12 @@ CREATE TABLE bakes(
   shape_time VARCHAR(255),
   prove_time VARCHAR(255),
   bake_time VARCHAR(255),
-  cool_time VARCHAR(255),
-  note_id INT
-  -- INT REFERENCES notes(id) ON DELETE CASCADE
-);
+  cool_time VARCHAR(255)
+  -- note_id INT
+  );
 
--- CREATE TABLE notes (
---   id SERIAL PRIMARY KEY,
---   note_tag VARCHAR(255),
---   bake_id INT
-
-  -- REFERENCES bakes(id) ON DELETE CASCADE
--- );
+CREATE TABLE notes (
+  id SERIAL PRIMARY KEY,
+  note_tag VARCHAR(255),
+  bake_id INT REFERENCES bakes(id) ON DELETE CASCADE
+  );

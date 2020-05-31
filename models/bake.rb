@@ -1,12 +1,12 @@
 require_relative('../db/sql_runner.rb')
-# require_relative('./note.rb')
+require_relative('./note.rb')
 
 class Bake
 
 attr_accessor :id, :bake_date, :score, :starter_time,
               :leaven_time, :autolyse_time, :add_salt_time,
-              :bulk_time, :shape_time, :prove_time, :bake_time, :cool_time
-              # :note_id,:image_id
+              :bulk_time, :shape_time, :prove_time, :bake_time,
+              :cool_time, :note_id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -21,19 +21,18 @@ attr_accessor :id, :bake_date, :score, :starter_time,
     @prove_time = options['prove_time']
     @bake_time = options['bake_time']
     @cool_time = options['cool_time']
-    # @note_id = options['note_id'].to_i
-    # @image_id = options['image_id'].to_i
+    @note_id = options['note_id']
   end
 
   def save()
     sql = "INSERT INTO bakes (bake_date, score, starter_time, leaven_time,
           autolyse_time, add_salt_time, bulk_time, shape_time, prove_time,
-          bake_time, cool_time
-    ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
-    RETURNING id"
+          bake_time, cool_time)
+          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11,$12)
+          RETURNING id"
     values = [@bake_date, @score, @starter_time, @leaven_time,
               @autolyse_time, @add_salt_time, @bulk_time, @shape_time,
-              @prove_time, @bake_time, @cool_time]
+              @prove_time, @bake_time, @cool_time, @note_id]
     result = SqlRunner.run(sql, values)
     @id = result[0]['id'].to_i
   end
@@ -57,8 +56,8 @@ attr_accessor :id, :bake_date, :score, :starter_time,
   def self.find_all()
     sql = " SELECT * FROM bakes"
     result = SqlRunner.run(sql)
-    bakes = result.map { |bake| Bake.new(bake) }
-    return bake
+    bakes = result.map {|bake| Bake.new(bake)}
+    return bakes
   end
 
 # => Find bake by ID - returning one bake
