@@ -9,7 +9,7 @@ attr_accessor :id, :note_tag, :bake_id
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @note_tag = options['note_tag']
-    @bake_id = options['bake_id']
+    @bake_id = options['bake_id'].to_i
   end
 
 # =>  save method
@@ -40,11 +40,11 @@ attr_accessor :id, :note_tag, :bake_id
   def self.find_all()
     sql = "SELECT * FROM notes"
     result = SqlRunner.run(sql)
-    notes = result.map { |note| Note.new(note) }
+    notes = result.map {|note| Note.new(note)}
     return notes
   end
 
-# => Find Note by ID - returning one Note
+# => Find Note by ID - returning one note
   def self.find_by_id(id)
     sql = "SELECT * FROM bakes WHERE id = $1"
     values = [id]

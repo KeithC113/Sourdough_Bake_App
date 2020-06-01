@@ -1,0 +1,18 @@
+<h1 style="text-align:center" > Sourdough Bake Record - Notes page</h1>
+
+<% @notes.each do |note| %>
+
+<p> Note id: <%=note.id%> </p>
+<p> Note: <%=note.note_tag%> </p>
+<p> Note's bake id: <%=note.bake_id%> </p>
+
+
+
+<p><a href="/bake/<%=note.bake_id%>">Show this bake </a></p>
+<form action="/notes/delete/<%=note.id%>" method="post">
+  <input type="Submit" value="Delete this note">
+</form>
+<p><a href="/notes/edit/<%=note.bake_id%>">Edit this note </a></p>
+
+<hr/>
+<% end %>

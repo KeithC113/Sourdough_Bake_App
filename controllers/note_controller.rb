@@ -2,56 +2,50 @@ require('sinatra')
 require('sinatra/contrib/all')
 require('pry')
 
-require_relative('./models/bake.rb')
-require_relative('./models/note.rb')
-also_reload('./models/*')
+require_relative('../models/bake.rb')
+require_relative('../models/note.rb')
+also_reload('../models/*')
 
 # =>  Find all notes
-get '/bake' do
-  @bakes = Bake.find_all()
-  erb(:index)
+get '/notes' do
+  @notes = Note.find_all()
+  erb(:"notes/index")
 end
 
-# => bake/new bake - working
-get '/bake/new' do
-  erb(:new)
+# => new note
+get '/notes/new' do
+  erb(:"notes/new")
 end
 
-# =>  Find bake by id  - working
-get '/bake/:id' do
-  @bake = Bake.find(params[:id])
-  erb(:show)
+# =>  Find note by bake id
+get '/note/:id' do
+  @note = Note.find(params[:id])
+  erb(:"notes/show")
 end
 
-# =>  Post a new record of a bake to the db - working
-post '/bake' do
-  @bake = Bake.new(params)
-  @bake.save()
-  erb(:create)
+# =>  Post a new note to the db
+post '/notes' do
+  @note = Note.new(params)
+  @note.save()
+  erb(:"notes/create")
 end
-
-# =>  Edit this bake
-get '/bake/edit/:id' do
-  @bake = Bake.find(params[:id])
-  erb(:edit)
+#
+# =>  Edit this note
+get '/notes/edit/:id' do
+  @note = Note.find_by_id(params[:id])
+  erb(:"notes/edit")
 end
-
-# => Delete this bake from the list of bakes - working
-post '/bake/delete/:id' do
-   @bake = Bake.find(params[:id])
-   @bake.delete
-  erb(:delete)
+#
+# # => Delete this note from the list of notes
+post '/notes/delete/:id' do
+   @note = Note.find_by_id(params[:id])
+   @note.delete
+  erb(:"notes/delete")
 end
-
-# =>  Edit this bake
-get '/bake/edit/:id' do
-  @bake = Bake.find(params[:id])
-  erb(:edit)
-end
-
-# =>  Send the new edited bake to the db
-post '/bake/:id' do
-    @bake = Bake.new(params)
-    @bake.update
-    redirect "/bake/#{params[:id]}"
+#
+# =>  Send the new edited note to the db
+post '/notes/:id' do
+    @note = Note.new(params)
+    @note.update
+    redirect "/notes/#{params[:id]}"
 end

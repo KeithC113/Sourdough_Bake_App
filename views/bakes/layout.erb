@@ -5,12 +5,11 @@
 </head>
 <body>
   <link rel="stylesheet" type="text/css" href="/styles/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <main>
-    <a href="/splash"
-    <button class = "fa fa-home"
+    <a href="/"
+    <button class = "button button_new_bake"
             type ="button"
-            >Home </button> </a>
+            > Home Page </button> </a>
     <a href="/bake/new" >
     <button class = "button button_new_bake"
             type="button"
@@ -19,10 +18,6 @@
     <button class = "button button_old_bakes"
             id="button"
             > Previous bakes</button> </a>
-    <a href="/notes"
-    <button class = "button"
-            id="button"
-            > All Notes</button> </a>
   <%= yield %>
   </main>
 </body>

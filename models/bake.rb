@@ -13,7 +13,7 @@ attr_accessor :id, :bake_date, :score, :starter_time,
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @bake_date = options['bake_date']
-    @score = options['score']
+    @score = options['score'].to_i
     @starter_time = options['starter_time']
     @leaven_time = options['leaven_time']
     @autolyse_time = options['autolyse_time']
@@ -89,6 +89,15 @@ attr_accessor :id, :bake_date, :score, :starter_time,
   def self.delete_all()
     sql= "DELETE FROM bakes"
     SqlRunner.run(sql)
+  end
+
+# =>  Find the note relating to that bake id
+  def notes()
+    sql = "SELECT * from notes WHERE bake_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql,values)
+    notes = results.map{|note| Note.new(note)}
+    return notes
   end
 
 

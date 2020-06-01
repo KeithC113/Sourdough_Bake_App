@@ -12,3 +12,8 @@
 <p> Time started the prove: <%=@bake.prove_time%> </p>
 <p> Time started put dough in the over: <%=@bake.bake_time%> </p>
 <p> Time loaf taken from the oven: <%=@bake.cool_time%> </p>
+<h2> Notes </h2>
+
+<% for note in @notes%>
+  Note: <%=note.note_tag%>
+<% end %>
