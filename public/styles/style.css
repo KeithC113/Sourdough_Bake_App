@@ -1,0 +1,42 @@
+body { background-image: url("/images/background.jpg");}
+
+.button {
+  border-color: red;
+  border-radius: 25px;
+  text-align: center;
+  margin-right: 50px;
+  padding: 5px;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.button--new_bake {
+ width: 100px;
+ height: 100px;
+ border: 3px solid #73AD21;
+}
+
+.button_newbake:hover {
+ background-color: #AF767F
+}
+
+.button_old_bakes {
+  width: 100px;
+  height: 100px;
+  border: 3px solid #73AD21;
+}
+
+.button--oldbakes:hover {
+ background-color: red;
+}
+
+.button--AppGuide {float:center;
+}
+
+.button--AppGuide:hover {
+ background-color: #76A5AF;
+}
+
+.button--wrapper {
+ margin: 0px 0px 30px 0px;
+}

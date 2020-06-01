@@ -1,36 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style>
-    body { background-image: url("/images/background.jpg");}
-    button {border-color: #878f99;
-            background-color: gray;
-            border-radius: 25px;
-            text-align: center;
-            margin-right: 50px;
-            padding: 5px;
-            font-size:100px;
-            border: 3px solid #878f99;
-            cursor:pointer;}
-  </style>
   <title >Sourdough Bake Record</title>
-    <link rel="stylesheet" type="text/css" href="/styles/buttons.css">
-    <ul>
-      <a href="/bake/new">Record a new bake</a>
-      <a href="/bake"> List of all bakes</a>
-    </ul>
 </head>
 <body>
+  <link rel="stylesheet" type="text/css" href="/styles/style.css">
   <main>
-    <button href="/bake/new";
-            id = "New_bake_button";
-            type="button";
-            > New Bake </button>
-
-    <button href="/bake/";
-            id = "Listof_old_bakes_button";
-            type="button";
-            > List of old bakes </button>
+    <a href="/"
+    <button class = "button button_new_bake"
+            type ="button"
+            > Home Page </button> </a>
+    <a href="/bake/new" >
+    <button class = "button button_new_bake"
+            type="button"
+            > New Bake </button> </a>
+    <a href="/bake"
+    <button class = "button button_old_bakes"
+            id="button"
+            > Previous bakes</button> </a>
   <%= yield %>
   </main>
 </body>

@@ -1,12 +1,14 @@
 require_relative('../db/sql_runner.rb')
 require_relative('./note.rb')
 
+require ('pry')
+
 class Bake
 
 attr_accessor :id, :bake_date, :score, :starter_time,
               :leaven_time, :autolyse_time, :add_salt_time,
               :bulk_time, :shape_time, :prove_time, :bake_time,
-              :cool_time, :note_tag
+              :cool_time
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -21,18 +23,17 @@ attr_accessor :id, :bake_date, :score, :starter_time,
     @prove_time = options['prove_time']
     @bake_time = options['bake_time']
     @cool_time = options['cool_time']
-    @note_tag = options['note_tag']
   end
 
   def save()
     sql = "INSERT INTO bakes (bake_date, score, starter_time, leaven_time,
           autolyse_time, add_salt_time, bulk_time, shape_time, prove_time,
-          bake_time, cool_time, note_tag)
-          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+          bake_time, cool_time)
+          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
           RETURNING id"
     values = [@bake_date, @score, @starter_time, @leaven_time,
               @autolyse_time, @add_salt_time, @bulk_time, @shape_time,
-              @prove_time, @bake_time, @cool_time, @note_tag]
+              @prove_time, @bake_time, @cool_time]
     result = SqlRunner.run(sql, values)
     @id = result[0]['id'].to_i
   end
@@ -41,12 +42,12 @@ attr_accessor :id, :bake_date, :score, :starter_time,
   def update()
     sql = "UPDATE bakes SET (bake_date, score, starter_time, leaven_time,
           autolyse_time, add_salt_time, bulk_time, shape_time, prove_time,
-          bake_time, cool_time, note_tag)
-          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
-          WHERE id = $13"
+          bake_time, cool_time)
+          = ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+          WHERE id = $12"
     values = [@bake_date, @score, @starter_time, @leaven_time,
               @autolyse_time, @add_salt_time, @bulk_time, @shape_time,
-              @prove_time, @bake_time, @cool_time, @note_tag, @id]
+              @prove_time, @bake_time, @cool_time, @id]
     SqlRunner.run(sql,values)
   end
 
@@ -65,6 +66,7 @@ attr_accessor :id, :bake_date, :score, :starter_time,
     values = [@id]
     SqlRunner.run(sql, values)
   end
+
 # => class functions
 
 # =>  Find all bakes - returning all bakes
@@ -79,7 +81,8 @@ attr_accessor :id, :bake_date, :score, :starter_time,
   def self.find(id)
     sql = "SELECT * FROM bakes WHERE id = $1"
     values = [id]
-    bake = SqlRunner.run(sql,values)
+    bake_hash = SqlRunner.run(sql,values).first
+    return Bake.new(bake_hash)
   end
 
 # =>  Delete all bakes from db

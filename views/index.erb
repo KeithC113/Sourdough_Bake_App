@@ -14,22 +14,12 @@
 <p> Time started the prove: <%=bake.prove_time%> </p>
 <p> Time started put dough in the over: <%=bake.bake_time%> </p>
 <p> Time loaf taken from the oven: <%=bake.cool_time%> </p>
-<p> <a id="myModal"
-        class="modal"
-        href="/bake/:id/<%=bake.note_tag%> "> Your bake notes </a></p>
-<p> <a href="/bake/<%=bake.id%> "> Show the full bake...</a></p>
+
+<p><a href="/bake/<%= bake.id%>">Show this bake </a></p>
+<form action="/bake/delete/<%=bake.id%>" method="post">
+  <input type="Submit" value="Delete this bake">
+</form>
+<p><a href="/bake/edit/<%=bake.id%>">Edit this bake </a></p>
 
 <hr/>
 <% end %>
-
-<!--
-<p class = "button button--newbake">
-  <a href="/bake/new">New Bake</a>
-</p>
-<p class = "button button--oldbakes">
-  <a href="/bake/bakelist">List of old bakes</a>
-</p>
-
-<p class = "button button--AppGuide">
-  <a href="/bake/AppGuide">App Guide</a>
-</p> -->

@@ -17,8 +17,7 @@ bake1 = Bake.new({
   'shape_time' => '12:35',
   'prove_time' => '12:36',
   'bake_time' => '12:37',
-  'cool_time' => '12:38',
-  'note_tag' => '<INSERT NOTE>'
+  'cool_time' => '12:38'
   })
 
   bake2 = Bake.new({
@@ -32,23 +31,21 @@ bake1 = Bake.new({
     'shape_time' => '13:35',
     'prove_time' => '13:36',
     'bake_time' => '13:37',
-    'cool_time' => '13:38',
-    'note_tag' => '<INSERT NOTE>'
+    'cool_time' => '13:38'
     })
 
   bake3 = Bake.new({
     'bake_date' => 'Sunday',
     'score' => '8',
     'starter_time' => '14:30',
-    'leaven_time' => '1431',
+    'leaven_time' => '14:31',
     'autolyse_time' => '14:32',
     'add_salt_time' => '14:33',
     'bulk_time' => '14:34',
     'shape_time' => '14:35',
     'prove_time' => '14:36',
     'bake_time' => '14:37',
-    'cool_time' => '14:38',
-    'note_tag' => '<INSERT NOTE>'
+    'cool_time' => '14:38'
     })
 
 bake1.save()
@@ -73,8 +70,6 @@ note1 = Note.new({
 note1.save()
 note2.save()
 note3.save()
-
-# bake1.update()
 
 binding.pry
 nil

@@ -13,8 +13,7 @@ CREATE TABLE bakes(
   shape_time VARCHAR(255),
   prove_time VARCHAR(255),
   bake_time VARCHAR(255),
-  cool_time VARCHAR(255),
-  note_tag VARCHAR(255)
+  cool_time VARCHAR(255)
   );
 
 CREATE TABLE notes (
