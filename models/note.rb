@@ -22,7 +22,7 @@ attr_accessor :id, :note_tag, :bake_id
     @id = result[0]['id'].to_i
   end
 
-# =>  Update note 
+# =>  Update note
   def update()
     sql = "UPDATE notes SET (note_tag, bake_id) VALUES ($1, $2) WHERE id = $3"
     values = [@note_tag, @bake_id, @id]
@@ -38,7 +38,7 @@ attr_accessor :id, :note_tag, :bake_id
 
 # =>  Find all Notes - returning all Notes
   def self.find_all()
-    sql = " SELECT * FROM notes"
+    sql = "SELECT * FROM notes"
     result = SqlRunner.run(sql)
     notes = result.map { |note| Note.new(note) }
     return notes
