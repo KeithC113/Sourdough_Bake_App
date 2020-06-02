@@ -1,31 +1,56 @@
+
 <form action="/bake" method="post">
+    <div class="form-label-group">
+      <label for="bake_date">Input the date of your bake:</label>
+      <input type="date" min="2020-06-01" max="2020-12-31" value="2020-06-01"/>
+    </div>
+    <div class="form-label-group">
+      <label for="starter_time">When did you refresh your starter ?:</label>
+      <input type="time" id="starter_time" name="starter_time">
+    </div>
+    <div class="form-label-group">
+      <label for="leaven_time">When did you start the leaven ?:</label>
+      <input type="time" id="leaven_time" name="leaven_time">
+    </div>
+    <div class="form-label-group">
+      <label for="autolyse_time">When did you start the Autolyse ?:</label>
+      <input type="time" id="autolyse_time" name="autolyse_time">
+    </div>
+    <div class="form-label-group">
+      <label for="bulk_time ">When did you start to bulk fold ?:</label>
+      <input type="time" id="bulk_time" name="bulk_time">
+    </div>
+    <div class="form-label-group">
+      <label for="shape_time">When did you start to shape?:</label>
+      <input type="time" id="shape_time" name="shape_time">
+    </div>
+    <div class="form-label-group">
+      <label for="shape_time">When did you start the prove?:</label>
+      <input type="time" id="prove_time" name="prove_time">
+    </div>
+    <div class="form-label-group">
+      <label for="bake_time">When did you put loaf in the oven ?:</label>
+      <input type="time" id="bake_time" name="bake_time">
+    </div>
+    <div class="form-label-group">
+      <label for="cool_time">When did you take loaf from the oven?:</label>
+      <input type="time" id="cool_time" name="cool_time">
+    </div>
 
-  <label for="bake_date">Input the date of your bake:</label>
-  <input type="date" min="2020-06-01" max="2020-12-31" value="2020-06-01"/>
-
-  <label for="starter_time">When did you refresh your starter ?:</label>
-  <input type="time" id="starter_time" name="starter_time">
-
-  <label for="leaven_time">When did you start the leaven ?:</label>
-  <input type="time" id="leaven_time" name="leaven_time">
-
-  <label for="autolyse_time">When did you start the Autolyse ?:</label>
-  <input type="time" id="autolyse_time" name="autolyse_time">
-
-  <label for="bulk_time ">When did you start to bulk fold ?:</label>
-  <input type="time" id="bulk_time" name="bulk_time">
-
-  <label for="shape_time">When did you start to shape?:</label>
-  <input type="time" id="shape_time" name="shape_time">
-
-  <label for="shape_time">When did you start the prove?:</label>
-  <input type="time" id="prove_time" name="prove_time">
-
-  <label for="bake_time">When did you put loaf in the oven ?:</label>
-  <input type="time" id="bake_time" name="bake_time">
-
-  <label for="cool_time">When did you take loaf from the oven?:</label>
-  <input type="time" id="cool_time" name="cool_time">
-
-  <input type="submit" value="Add Bake to record">
+    <div class="form-label-group">
+      <label for="Score">How would rate your loaf ? :</label>
+             <select>
+              <option value = "1"id="score" name="score">1</option>
+              <option value = "2"id="score" name="score">2</option>
+              <option value = "3"id="score" name="score">3</option>
+              <option value = "4"id="score" name="score">4</option>
+              <option value = "5"id="score" name="score">5</option>
+             </select>
+    </div>
+    <div class="form-label-group">
+    <input type="submit" value="Log this bake">
+    </div>
 </form>
+
+<a href="/index"
+<button class = "button_kac" type ="button"> click to return home </button> </a>

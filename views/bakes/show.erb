@@ -14,11 +14,8 @@
 <p> Time loaf taken from the oven: <%=@bake.cool_time%> </p>
 <h2> Notes: </h2>
 
-
-
 <% for note in @notes%>
     <%=note.note_tag%>
-    <hr> </hr> 
 <% end %>
 
 <p> To add a note to the bake please fill in the box below then click Add Note </p>
@@ -28,3 +25,9 @@
     <input id="note_tag" name="note_tag">
     <input type="submit" value="Add note">
 </form>
+
+<a href="/bake"
+<button class = "button_kac" type ="button"> click to view all bakes </button> </a>
+
+<a href="/index"
+<button class = "button_kac" type ="button"> click to return home </button> </a>

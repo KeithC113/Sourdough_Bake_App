@@ -1,4 +1,4 @@
-<h1 style="text-align:center" > Sourdough Bake Record</h1>
+<!-- <h1 style="text-align:center" > Sourdough Bake Record</h1> -->
 
 <% @bakes.each do |bake| %>
 
@@ -15,13 +15,13 @@
 <p> Time started put dough in the over: <%=bake.bake_time%> </p>
 <p> Time loaf taken from the oven: <%=bake.cool_time%> </p>
 
-<p><a href="/bake/<%= bake.id%>">Show this bake </a></p>
+<p><a href=/bake/<%= bake.id%> class = "button_kac" type = "button">Show this bake </a></p>
 
-<form action="/bake/delete/<%=bake.id%>" method="post">
-  <input type="Submit" value="Delete this bake">
+<p><button class = "button_kac" type = "button" href="/bake/edit/<%=bake.id%>">Edit this bake </button></p>
+
+<form class="form-label-group" action="/bake/delete/<%=bake.id%>" method="post">
+  <input class = "button_kac" type="Submit" value="Delete this bake">
 </form>
-
-<p><a href="/bake/edit/<%=bake.id%>">Edit this bake </a></p>
 
 <hr/>
 <% end %>

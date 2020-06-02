@@ -1,44 +1,59 @@
-<h1 style="color:green;"> Bake number <%=@bake.id%> is open for editing... </h1>
+<h1 class = ".h1_create_new_bake"> Bake number <%=@bake.id%> is open for editing </h1>
 
 <form action="/bake/<%=@bake.id%>" method="post">
+  <div class="form-label-group">
       <label for="bake_date">Edit the date of your bake:</label>
       <input type="date" min="2020-06-01" max="2020-12-31" value="2020-06-01"/>
-
+  </div>
+  <div class="form-label-group">
       <label for="Score">Edit the score you gave the loaf:</label>
-             <select id = "score" name="score" size = "5" >
+             <select>
+              <option value = "1"id="score" name="score">1</option>
+              <option value = "2"id="score" name="score">2</option>
+              <option value = "3"id="score" name="score">3</option>
+              <option value = "4"id="score" name="score">4</option>
+              <option value = "5"id="score" name="score">5</option>
              </select>
-
+  </div>
+  <div class="form-label-group">
       <label for="starter_time">Edit the time you refreshed your starter:</label>
       <input value = "<%=@bake.starter_time%>"
       type="time" id="starter_time" name="starter_time">
-
+  </div>
+  <div class="form-label-group">
       <label for="leaven_time">Edit time when you started the leaven:</label>
       <input value = "<%=@bake.leaven_time%>"
       type="time" id="leaven_time" name="leaven_time">
-
+  </div>
+  <div class="form-label-group">
       <label for="autolyse_time">Edit time you started the Autolyse:</label>
       <input value = "<%=@bake.autolyse_time%>"
        type="time" id="autolyse_time" name="autolyse_time">
-
+  </div>
+  <div class="form-label-group">
       <label for="bulk_time ">Edit time you started to bulk fold:</label>
       <input value = "<%=@bake.bulk_time%>"
       type="time" id="bulk_time" name="bulk_time">
-
+  </div>
+  <div class="form-label-group">
       <label for="shape_time"> Edit time you started the shape:</label>
       <input value = "<%=@bake.shape_time%>"
       type="time" id="shape_time" name="shape_time">
-
+  </div>
+  <div class="form-label-group">
       <label for="prove_time">Edit time you started the prove:</label>
       <input value = "<%=@bake.prove_time%>"
       type="time" id="prove_time" name="prove_time">
-
+  </div>
+  <div class="form-label-group">
       <label for="bake_time">Edit time you put loaf in the oven:</label>
       <input value = "<%=@bake.bake_time%>"
       type="time" id="bake_time" name="bake_time">
-
+  </div>
+  <div class="form-label-group">
       <label for="cool_time">Edit time loaf taken from oven:</label>
       <input value = "<%=@bake.cool_time%>"
       type="time" id="cool_time" name="cool_time">
-
-      <input type="submit" value="Update edited bake">
+  </div>
+      <input class = "form-label-group" type="submit" value="Update edited bake">
  </form>
