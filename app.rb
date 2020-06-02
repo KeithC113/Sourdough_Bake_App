@@ -5,6 +5,6 @@ require_relative('controllers/note_controller.rb')
 
 also_reload('./models/*')
 
-get '/splash' do
-  erb(:splash)
+get '/index' do
+  erb(:index)
 end

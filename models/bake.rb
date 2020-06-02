@@ -91,7 +91,7 @@ attr_accessor :id, :bake_date, :score, :starter_time,
     SqlRunner.run(sql)
   end
 
-# =>  Find the note relating to that bake id
+# =>  Find the note relating to the bake id
   def notes()
     sql = "SELECT * from notes WHERE bake_id = $1"
     values = [@id]

@@ -29,13 +29,13 @@ post '/notes' do
   @note.save()
   erb(:"notes/create")
 end
-#
+
 # =>  Edit this note
 get '/notes/edit/:id' do
   @note = Note.find_by_id(params[:id])
   erb(:"notes/edit")
 end
-#
+
 # # => Delete this note from the list of notes
 post '/notes/delete/:id' do
    @note = Note.find_by_id(params[:id])

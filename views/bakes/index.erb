@@ -16,9 +16,11 @@
 <p> Time loaf taken from the oven: <%=bake.cool_time%> </p>
 
 <p><a href="/bake/<%= bake.id%>">Show this bake </a></p>
+
 <form action="/bake/delete/<%=bake.id%>" method="post">
   <input type="Submit" value="Delete this bake">
 </form>
+
 <p><a href="/bake/edit/<%=bake.id%>">Edit this bake </a></p>
 
 <hr/>

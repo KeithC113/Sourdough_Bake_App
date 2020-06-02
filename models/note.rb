@@ -46,7 +46,7 @@ attr_accessor :id, :note_tag, :bake_id
 
 # => Find Note by ID - returning one note
   def self.find_by_id(id)
-    sql = "SELECT * FROM bakes WHERE id = $1"
+    sql = "SELECT * FROM notes WHERE id = $1"
     values = [id]
     result = SqlRunner.run(sql, values)
     return Note.new(result.first)
@@ -58,5 +58,12 @@ attr_accessor :id, :note_tag, :bake_id
     SqlRunner.run(sql)
   end
 
+  def bake()
+    sql = "SELECT * FROM bakes WHERE id = $1"
+    values = [@bake_id]
+    results = SqlRunner.run(sql, values)
+    bake_data = results[0]
+    bake = Bake.new(bake_data)
+  end
 
 end

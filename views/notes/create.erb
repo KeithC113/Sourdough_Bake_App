@@ -1,2 +1,8 @@
 <p>Well done! You've created a new note!</p>
-<p>Your bake id is  <%= @note.id %></p>
+
+<!--  Add in a link back to the bake show  -->
+
+<a href="/bakes/<%=bake.id%>">
+<button class = "button button_new_bake"
+        type="button"
+        > Click to return to bake </button> </a>

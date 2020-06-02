@@ -4,7 +4,7 @@
 
 <p> Note id: <%=note.id%> </p>
 <p> Note: <%=note.note_tag%> </p>
-<p> Note's bake id: <%=note.bake_id%> </p>
+<p> Bake id: <%=note.bake_id%> </p>
 
 
 
@@ -12,7 +12,7 @@
 <form action="/notes/delete/<%=note.id%>" method="post">
   <input type="Submit" value="Delete this note">
 </form>
-<p><a href="/notes/edit/<%=note.bake_id%>">Edit this note </a></p>
+<p><a href="/notes/edit/<%=note.id%>">Edit this note </a></p>
 
 <hr/>
 <% end %>

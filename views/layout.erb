@@ -2,27 +2,20 @@
 <html>
 <head>
   <title >Sourdough Bake Record</title>
+  <link rel="stylesheet" type="text/css" href="/styles/style.css">
 </head>
 <body>
-  <link rel="stylesheet" type="text/css" href="/styles/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <div class="header">
+  <h1>Sourdough Bake Record</h1>
+</div>
+
+<div class="topnav">
+  <a href="/index">Home</a>
+  <a href="/bake/new">New Bake</a>
+  <a href="/bake">Previous Bakes</a>
+  <a href="/notes"> Notes page </a>
+</div>
   <main>
-    <a href="/splash"
-    <button class = "fa fa-home"
-            type ="button"
-            >Home </button> </a>
-    <a href="/bake/new" >
-    <button class = "button button_new_bake"
-            type="button"
-            > New Bake </button> </a>
-    <a href="/bake"
-    <button class = "button button_old_bakes"
-            id="button"
-            > Previous bakes</button> </a>
-    <a href="/notes"
-    <button class = "button"
-            id="button"
-            > All Notes</button> </a>
   <%= yield %>
   </main>
 </body>

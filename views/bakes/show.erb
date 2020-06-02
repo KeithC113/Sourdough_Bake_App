@@ -12,8 +12,19 @@
 <p> Time started the prove: <%=@bake.prove_time%> </p>
 <p> Time started put dough in the over: <%=@bake.bake_time%> </p>
 <p> Time loaf taken from the oven: <%=@bake.cool_time%> </p>
-<h2> Notes </h2>
+<h2> Notes: </h2>
+
+
 
 <% for note in @notes%>
-  Note: <%=note.note_tag%>
+    <%=note.note_tag%>
+    <hr> </hr> 
 <% end %>
+
+<p> To add a note to the bake please fill in the box below then click Add Note </p>
+<form action="/notes" method="post">
+  <label for="Note"> Add your note in here >>> </label>
+  <input type="hidden" name="bake_id" value="<%=@bake.id%>">
+    <input id="note_tag" name="note_tag">
+    <input type="submit" value="Add note">
+</form>
