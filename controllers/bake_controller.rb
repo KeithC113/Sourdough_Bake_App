@@ -17,6 +17,19 @@ get '/bake/new' do
   erb(:"bakes/new")
 end
 
+# =>  Edit this bake
+get '/bake/edit/:id' do
+  @bake = Bake.find(params[:id])
+  erb(:"bakes/edit")
+end
+
+# =>  Send the new edited bake to the db
+post '/bake/:id' do
+    @bake = Bake.new(params)
+    @bake.update
+    redirect "/bake/#{params[:id]}"
+end
+
 # =>  Find bake by id  - working
 get '/bake/:id' do
   @bake = Bake.find(params[:id])
@@ -31,28 +44,9 @@ post '/bake' do
   erb(:"bakes/create")
 end
 
-# =>  Edit this bake
-get '/bake/edit/:id' do
-  @bake = Bake.find(params[:id])
-  erb(:"bakes/edit")
-end
-
 # => Delete this bake from the list of bakes - working
 post '/bake/delete/:id' do
    @bake = Bake.find(params[:id])
    @bake.delete
   erb(:"bakes/delete")
-end
-
-# =>  Edit this bake
-get '/bake/edit/:id' do
-  @bake = Bake.find(params[:id])
-  erb(:"bakes/edit")
-end
-
-# =>  Send the new edited bake to the db
-post '/bake/:id' do
-    @bake = Bake.new(params)
-    @bake.update
-    redirect "/bake/#{params[:id]}"
 end

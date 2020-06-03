@@ -1,4 +1,12 @@
-<!-- <h1 style="text-align:center" > Sourdough Bake Record</h1> -->
+<h1 class = ".h1_create_new_bake"> Index of all bakes</h1>
+
+<h2 class = ".h2_create_new_bake">
+
+Below is a list of all your recorded bakes.
+
+You can view the bake, edit or delete by clicking on the buttons below </h2>
+
+<hr/>
 
 <% @bakes.each do |bake| %>
 
@@ -15,9 +23,11 @@
 <p> Time started put dough in the over: <%=bake.bake_time%> </p>
 <p> Time loaf taken from the oven: <%=bake.cool_time%> </p>
 
-<p><a href=/bake/<%= bake.id%> class = "button_kac" type = "button">Show this bake </a></p>
+<a href=/bake/<%= bake.id%>>
+<button class = "button_kac" type = "button">Show this bake </button></a>
 
-<p><button class = "button_kac" type = "button" href="/bake/edit/<%=bake.id%>">Edit this bake </button></p>
+<a href="/bake/edit/<%=bake.id%>">
+<button class = "button_kac" type = "button">Edit this bake </button></a>
 
 <form class="form-label-group" action="/bake/delete/<%=bake.id%>" method="post">
   <input class = "button_kac" type="Submit" value="Delete this bake">

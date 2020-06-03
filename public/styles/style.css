@@ -9,7 +9,7 @@ body {
 }
 
 .h1_create_new_bake {
-  color: red;
+  color: #564747;
   font-size: 50px;
   }
 
@@ -64,8 +64,8 @@ body {
 }
 
 .column.middle {
-  width: 50%;
-  padding: 25px;
+  width: 78%;
+  padding: 50px;
 
 }
 
@@ -80,12 +80,33 @@ form {
 
 }
 
-.form-delete_button{
-
-
+.input-submit {
+  background-color: #828783;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
 .button_kac {
+  background-color: #828783;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.input_button_kac {
   background-color: #828783;
   border: none;
   color: white;

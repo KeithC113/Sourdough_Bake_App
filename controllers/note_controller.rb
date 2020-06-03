@@ -36,13 +36,13 @@ get '/notes/edit/:id' do
   erb(:"notes/edit")
 end
 
-# # => Delete this note from the list of notes
+# => Delete this note from the list of notes
 post '/notes/delete/:id' do
    @note = Note.find_by_id(params[:id])
    @note.delete
   erb(:"notes/delete")
 end
-#
+
 # =>  Send the new edited note to the db
 post '/notes/:id' do
     @note = Note.new(params)
